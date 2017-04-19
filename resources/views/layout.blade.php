@@ -55,6 +55,11 @@
                 <li class="{{ Request::is('servicios') ? 'active' : '' }}"><a href="{{URL::asset('/servicios')}}">Sercivios</a></li>
                 <li class="{{ Request::is('preguntas') ? 'active' : '' }}"><a href="{{URL::asset('/preguntas')}}">Preguntas Frecuentes</a></li>
               </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="{{ Request::is('login') ? 'active' : '' }}" ><a href="{{URL::asset('/admin')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  <li><a ><span class=""></span> </a></li>
+
+              </ul>
             </div>
           </div>
         </nav>
