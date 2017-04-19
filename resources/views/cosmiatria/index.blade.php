@@ -50,8 +50,7 @@
 @endsection
 
 @section('mapa')
-<script type="text/javascript">var centreGot = false;</script>{!!$map['js']!!}
-<h1>hola</h1>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6600">
       <!-- Indicators -->
       <ol class="carousel-indicators">

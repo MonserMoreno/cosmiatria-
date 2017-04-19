@@ -28,30 +28,8 @@ class ControllerPrincipal extends Controller
         $promocion = promocion::all();
         //return view('cosmiatria.index',['servicio' => $servicios]);
         //configuaración
-        $config = array();
-        $config['center'] = 'auto';
-        $config['map_width'] = 400;
-        $config['map_height'] = 400;
-        $config['zoom'] = 11;
-        $config['onboundschanged'] = 'if (!centreGot) {
-            var mapCentre = map.getCenter();
-            marker_0.setOptions({
-                position: new google.maps.LatLng(19.075241, -98.164927)
 
-            });
-        }
-        centreGot = true;';
-
-        \Gmaps::initialize($config);
-
-        // Colocar el marcador
-        // Una vez se conozca la posición del usuario
-        $marker = array();
-        \Gmaps::add_marker($marker);
-
-        $map = \Gmaps::create_map();
-
-        return view('cosmiatria.index',compact('servicios','hora','promocion','map'));
+        return view('cosmiatria.index',compact('servicios','hora','promocion'));
     }
 
 

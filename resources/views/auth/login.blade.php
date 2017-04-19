@@ -51,7 +51,7 @@
 									Login
 								</button>
 
-								<a href="/password/email">F?</a>
+							
 							</div>
 						</div>
 					</form>
