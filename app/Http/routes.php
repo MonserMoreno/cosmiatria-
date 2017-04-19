@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 use App\citas;
 use App\servicios;
 use App\preguntas;
@@ -17,15 +7,13 @@ use App\promocion;
 
 use Illuminate\Mail\Message;
 
-Route::get('/gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);
-Route::get('/', ['as ' => 'gmaps', 'uses' =>  'ControllerPrincipal@index']);
+//Route::get('/gmaps', ['as ' => 'gmaps', 'uses' => 'GmapsController@index']);
+//Route::get('/', ['as ' => 'gmaps', 'uses' =>  'ControllerPrincipal@index']);
+Route::get('/','ControllerPrincipal@index');
   //$servicios = servicios::all();
     //return view('cosmiatria.index',compact('servicios'));
 //});
-Route::get('citaConfirmar/{cita}','AdminController@confirmarcion');
-Route::get('eliminarCita/{cita}','AdminController@eliminarCita')->where('cita','[0-9]+');
-Route::get('actualizarCita/{cita}','AdminController@actualizarCita')->where('cita','[0-9]+');
-Route::post('actualizarCita/{cita}','AdminController@actualizarCitaPost');
+
 
 
 Route::get('servicios', function () {
@@ -50,30 +38,7 @@ Route::get('preguntas', function () {
   //  return view('cosmiatria/servicios');
 });
 
-Route::get('admin/promocion', 'AdminController@vistapromocion');
-
 //Route::get('admin', 'AdminController@index');
-
-Route::get('admin', [
-  'uses'  => 'AdminController@index',
-  'as'    => 'admin'
-]);
-
-Route::get('admin/servicios','AdminController@vista');
-Route::get('admin/nServicio','AdminController@vistaNS');
-Route::post('admin/CrearServicio','AdminController@store');
-Route::get('admin/pregunta','AdminController@vistaP');
-Route::get('admin/nPregunta','AdminController@vistaNP');
-Route::post('admin/CrearPregunta','AdminController@nuevaP');
-Route::get('edit/{usu}','AdminController@edit')->where('usu','[0-9]+');
-Route::post('edit/{usu}','AdminController@update');
-Route::get('eliminar/{usu}','AdminController@destroy')->where('usu','[0-9]+');
-Route::get('editp/{usu}','AdminController@editarp')->where('usu','[0-9]+');
-Route::post('editp/{usu}','AdminController@actualiza');
-Route::get('eliminarp/{usu}','AdminController@elimina')->where('usu','[0-9]+');
-
-Route::get('editprom/{usu}','AdminController@editpromo')->where('usu','[0-9]+');
-Route::post('editprom/{usu}','AdminController@actpromo');
 
 Route::post('/CrearCita','ControllerPrincipal@store');
 
@@ -97,3 +62,32 @@ Route::get('logout', [
   'uses' => 'Auth\AuthController@getLogout',
   'as'   => 'logout'
 ]);
+
+
+Route::group(['middleware' => 'auth'], function(){
+      Route::get('admin', [
+        'uses'  => 'AdminController@index',
+        'as'    => 'admin'
+      ]);
+
+      Route::get('admin/servicios','AdminController@vista');
+      Route::get('admin/nServicio','AdminController@vistfaNS');
+      Route::post('admin/CrearServicio','AdminController@store');
+      Route::get('admin/pregunta','AdminController@vistaP');
+      Route::get('admin/nPregunta','AdminController@vistaNP');
+      Route::post('admin/CrearPregunta','AdminController@nuevaP');
+      Route::get('edit/{usu}','AdminController@edit')->where('usu','[0-9]+');
+      Route::post('edit/{usu}','AdminController@update');
+      Route::get('eliminar/{usu}','AdminController@destroy')->where('usu','[0-9]+');
+      Route::get('editp/{usu}','AdminController@editarp')->where('usu','[0-9]+');
+      Route::post('editp/{usu}','AdminController@actualiza');
+      Route::get('eliminarp/{usu}','AdminController@elimina')->where('usu','[0-9]+');
+      Route::get('admin/promocion', 'AdminController@vistapromocion');
+      Route::get('editprom/{usu}','AdminController@editpromo')->where('usu','[0-9]+');
+      Route::post('editprom/{usu}','AdminController@actpromo');
+
+      Route::get('citaConfirmar/{cita}','AdminController@confirmarcion');
+      Route::get('eliminarCita/{cita}','AdminController@eliminarCita')->where('cita','[0-9]+');
+      Route::get('actualizarCita/{cita}','AdminController@actualizarCita')->where('cita','[0-9]+');
+      Route::post('actualizarCita/{cita}','AdminController@actualizarCitaPost');
+});
