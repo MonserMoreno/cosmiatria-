@@ -28,7 +28,7 @@ class ControllerPrincipal extends Controller
         $promocion = promocion::all();
         //return view('cosmiatria.index',['servicio' => $servicios]);
         //configuaración
-        $config = array();
+        /*$config = array();
         $config['center'] = 'auto';
         $config['map_width'] = 400;
         $config['map_height'] = 400;
@@ -49,9 +49,9 @@ class ControllerPrincipal extends Controller
         $marker = array();
         \Gmaps::add_marker($marker);
 
-        $map = \Gmaps::create_map();
+        $map = \Gmaps::create_map();*/
 
-        return view('cosmiatria.index',compact('servicios','hora','promocion','map'));
+        return view('cosmiatria.index',compact('servicios','hora','promocion'));
     }
 
     /**

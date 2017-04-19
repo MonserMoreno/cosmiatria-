@@ -91,7 +91,7 @@
           @yield('contacto')
       </div>
 
-      <div class="col-lg-8">
+      <div class="col-lg-4">
         @yield('mapa')
       </div>
 
