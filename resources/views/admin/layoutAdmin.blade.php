@@ -18,7 +18,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/css/dataTables.bootstrap.min.css" >
 
-
+<link rel="stylesshet" href="{{ asset('css/app.cs')}}">
 <!-- Datepicker Files -->
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="../asset/datePicker/css/bootstrap-datepicker3.css">
@@ -50,6 +50,7 @@
             <li class="{{ Request::is('admin/pregunta') ? 'active' : '' }}"><a href="{{URL::asset('admin/pregunta')}}">Preguntas Frecuentes</a></li>
             <li class="{{ Request::is('admin/promocion') ? 'active' : '' }}"><a href="{{URL::asset('admin/promocion')}}">Promociones</a></li>
             <li class="glyphicon glyphicon-cog"><a href="#" target="_blank" title="Facebook"></a></li>
+            <li><a href="{{route('logout')}}">Salir</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

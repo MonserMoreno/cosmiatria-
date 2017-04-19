@@ -63,4 +63,12 @@ class AuthController extends Controller
         ]);
     }
 
+
+    public function loginPath(){
+      return route('login');
+    }
+
+    public function redirectPath(){
+      return route('admin');
+    }
 }
