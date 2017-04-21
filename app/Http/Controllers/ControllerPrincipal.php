@@ -13,11 +13,7 @@ use App\servicios;
 use App\promocion;
 class ControllerPrincipal extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(){
 
         //$obj = Hora::findOrFail("1");
@@ -33,16 +29,15 @@ class ControllerPrincipal extends Controller
     }
 
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
+      $this->validate($request, [
+        'nombre' => ['required','max:100'],
+        'telefono' => ['required','digits:10'],
+        'mail'=>    ['required','email'],
+        'date'=>   ['required'],
+      ]);
      //$datos= request()->all();
      citas::create([
        'nombre'=>$request['nombre'],
@@ -52,7 +47,10 @@ class ControllerPrincipal extends Controller
        'hora'=>$request['hora'],
        'numero'=>$request['telefono'],
        'estatus'=>false,
+       'atendido'=>false,
      ]);
+
+
      return redirect()->to('/')->with('message','Solicitud enviada, confirmacion por correo');
 
      //dd($request);

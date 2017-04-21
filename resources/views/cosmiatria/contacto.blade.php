@@ -94,20 +94,21 @@
 
         <div class="panel-body">
 
-            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre completo*" />
+            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre completo*"  value="{{ old('nombre')}}" />
             <br>
-            <input type="email" class="form-control" name="mail" id="mail" placeholder="Email*"/>
+            <input type="email" class="form-control" name="mail" id="mail" placeholder="Email*" value="{{ old('mail')}}"  />
             <br>
-            <input type="text" class="form-control input-medium bfh-phone" data-country="US" name="telefono" id="telefono" placeholder="Teléfono*" />
+            <input type="text" class="form-control input-medium bfh-phone" data-country="US" name="telefono" id="telefono"
+                placeholder="Teléfono*"  value="{{ old('telefono')}}" />
             <br>
-            <select class="form-control" name="servicio">
+            <select class="form-control" name="servicio" required >
               <option value="" disabled selected>Selecciona Servicio* </option>
               @foreach ($servicios as $servicio)
               <option>{{ $servicio->nombre}}</option>
               @endforeach
             </select>
             <br>
-            <select class="form-control" name="hora">
+            <select class="form-control" name="hora" required >
               <option value="" disabled selected>Selecciona hora* </option>
               @foreach ($hora as $h)
               <option>{{ $h->hora}}</option>
@@ -115,13 +116,13 @@
             </select>
             <br>
             <div class='input-group date' id='datetimepicker1'>
-              <input type="text" class="form-control datepicker" name="date" placeholder="Fecha">
+              <input type="text" class="form-control datepicker" name="date" placeholder="Fecha" value={{old('date')}} >
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
               </span>
             </div>
             <br>
-
+            <span class="help-block">Todo los campos son obligatorios</span>
             <button type="submit" class="btn btn-default">Registrar</button>
           </from>
           <br>

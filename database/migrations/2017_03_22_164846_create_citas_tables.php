@@ -21,6 +21,7 @@ class CreateCitasTables extends Migration
             $table->date('fecha',255);
             $table->integer('hora');
             $table->boolean('estatus');
+            $table->boolean('atendido');
             $table->timestamps();
         });
     }

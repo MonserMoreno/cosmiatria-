@@ -17,6 +17,7 @@
     </thead>
     <tbody>
         @foreach($citas as $cita)
+        @if($cita->atendido == false)
           <tr>
             <td>  {{$cita->nombre}} </td>
             <td>  {{$cita->hora}} </td>
@@ -26,21 +27,25 @@
             <td>  {{$cita->numero}} </td>
 
             <td>
-              <a href="{!! URL::to('/actualizarCita/'.$cita->id) !!}" class="btn btn-warning btn-default btn-sm btn-block"
+              <a href="{!! URL::to('/actualizarCita/'.$cita->id) !!}" class="btn btn-warning btn-primary btn-sm btn-block"
                 role="button">Reagendar</a>
-              <a href="{!! URL::to('/eliminarCita/'.$cita->id) !!}" class="btn btn-danger btn-default btn-sm btn-block"
+              <a href="{!! URL::to('/eliminarCita/'.$cita->id) !!}" class="btn btn-danger btn-primary btn-sm btn-block"
                 role="button">Eliminar</a>
-            </td>
-            @if($cita->estatus == false)
-            <td>
-              <div class="btn-group">
-                <a href="{!! URL::to('/citaConfirmar/'.$cita->id) !!}"
-                  class="btn btn-success btn-primary btn-sm btn-block "
-                  role="button">Confirmar</a>
-              </div>
-            </td>
-            @endif
+
+                  @if($cita->estatus == false)
+                    <a href="{!! URL::to('/citaConfirmar/'.$cita->id) !!}"
+                      class="btn btn-success btn-primary btn-sm btn-block "
+                      role="button">Confirmar</a>
+                  @else
+                    <a href="{!! URL::to('/atendido/'.$cita->id) !!}"
+                      class="btn btn-info btn-primary btn-sm btn-block "
+                      role="button">Atendido</a>
+
+                  @endif
+
+              </td>
           </tr>
+          @endif
         @endforeach
     </tbody>
   </table>

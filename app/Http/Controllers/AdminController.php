@@ -15,6 +15,7 @@ use Redirect;
 use Illuminate\Mail\Message;
 use App\Hora;
 use App\promocion;
+use App\clientes;
 
 class AdminController extends Controller
 {
@@ -40,9 +41,49 @@ class AdminController extends Controller
             ->subject('Confirmación Cita');
       });;
 
+      $a = clientes::where('nombre','=',$cita->nombre)
+                    ->Where('mail','=',$cita->mail)
+                    ->first();
+
+      if(is_null($a)){
+        //echo "pong";
+        clientes::create([
+          'nombre'=>$cita->nombre,
+          'mail'=>$cita->mail,
+          'numero' => $cita->numero,
+        ]);
+      }
+
       $cita->estatus = true;
       $cita->save();
       return redirect()->to('admin')->with('message','Correo enviado!');
+
+    }
+
+
+    public function atendido($id){
+      $cita = citas::findOrFail($id);
+    /*  Mail::send('emails.confirmacion',compact('cita'), function (Message $message) use($cita){
+        $message ->to($cita->mail,$cita->nombre)
+            ->from('laravelsokdesa@gmail.com','Cosmiatria Company')
+            ->subject('Confirmación Cita');
+      });;*/
+
+      $a = clientes::where('nombre','=',$cita->nombre)
+                    ->Where('mail','=',$cita->mail)
+                    ->first();
+
+
+
+        $num = $a->citas;
+        $cliente = clientes::find($a->id);
+        $cliente->citas = $num+1;
+        $cliente->save();
+
+      $cita->atendido = true;
+      $cita->save();
+      return redirect()->to('admin')->with('message','Almacenado!');
+
     }
 
     public function store(Request $request)
