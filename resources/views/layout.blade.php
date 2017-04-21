@@ -96,7 +96,7 @@
           @yield('contacto')
       </div>
 
-      <div class="col-lg-8">
+      <div class="col-lg-4">
         @yield('mapa')
       </div>
 
@@ -109,6 +109,7 @@
       <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
   </div>
+  <embed id=sonido src="{{URL::asset('storage/melodia.mp3')}}" autostart=true loop=true width=0 height=0>
 
 
     <!-- Bootstrap core JavaScript
