@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function(){
       ]);
 
       Route::get('admin/servicios','AdminController@vista');
-      Route::get('admin/nServicio','AdminController@vistfaNS');
+      Route::get('admin/nServicio','AdminController@vistaNS');
       Route::post('admin/CrearServicio','AdminController@store');
       Route::get('admin/pregunta','AdminController@vistaP');
       Route::get('admin/nPregunta','AdminController@vistaNP');
