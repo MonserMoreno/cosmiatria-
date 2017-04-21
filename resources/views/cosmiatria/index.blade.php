@@ -59,7 +59,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <iframe width="800" height="350" src="{{URL::asset('storage/video.mp4')}}" frameborder="0" allowfullscreen=""></iframe>
+          <iframe width="800" height="350" src="{{URL::asset('storage/vide.gif')}}" frameborder="0" allowfullscreen=""></iframe>
           <div class="container">
             <div class="carousel-caption">
             </div>
